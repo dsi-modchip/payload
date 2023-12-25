@@ -1,0 +1,6 @@
+[submodule "subprojects/libdawn"]
+	path = subprojects/libdawn
+	url = git@github.com:dsi-modchip/libdawn.git
+[submodule "subprojects/uzlib"]
+	path = subprojects/uzlib
+	url = https://github.com/pfalcon/uzlib

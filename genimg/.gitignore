@@ -1,0 +1,6 @@
+config.mk
+lzss
+*.pyc
+*.pyo
+__pycache__/
+*.bin

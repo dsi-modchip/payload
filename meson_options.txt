@@ -1,0 +1,2 @@
+option('use_nano', description: 'Use newlib-nano', type: 'feature', value: 'enabled', yield: true)
+option('crt0_lang', description: 'crt0 target language', type: 'combo', choices: ['c', 'rust'], value: 'c', yield: true)
