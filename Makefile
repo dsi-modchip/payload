@@ -2,9 +2,13 @@
 MESON ?= meson
 PYTHON3 ?= python3
 
--include config.mk
+FLASHROM ?= flashrom
+FLASHROM_ARGS ?=
+FLASHROM_PRGM ?=
 
 EXTRA_GENIMG_ARGS ?=
+
+-include config.mk
 
 BUILDTYPE ?= debugoptimized
 
@@ -54,6 +58,14 @@ build/payload.bin: build_7 build_9 genimg/lzss build/
 build: build/payload.bin
 
 all: build
+
+
+dfu: build/payload.bin
+	$(DFU_UTIL) -a 0 -D "$<"
+
+flash: build/payload.bin
+	@if [ "x$(FLASHROM_PRGM)" = "x" ]; then >&2 echo "ERROR: FLASHROM_PRGM must be provided."; false; fi
+	$(FLASHROM) -p $(FLASHROM_PRGM) $(FLASHROM_ARGS) -w "$<"
 
 
 clean:
